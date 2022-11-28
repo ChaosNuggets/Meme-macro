@@ -4,16 +4,27 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 F9::
-TIMES_TO_LOOP := 15
-Loop %TIMES_TO_LOOP% {
+Loop {
+  ; Click return on the computer
+  MouseMove 950, 100
+  Sleep 50
+  MouseMove 975, 100
+  Sleep 50
+  Click
+  
+  ; Walk to the first bucket
+  Send {s down}
+  Sleep 900
+  Send {s up}
+  
   ; Pick up from the first bucket
   Send {e down}
   Sleep 50
   Send {e up}
   
   ; Walk to the second bucket
-  Send {w down}
-  Sleep 1600
+  Send {d down}
+  Sleep 1200
   
   ; Pick up from the second bucket
   Send {e down}
@@ -29,19 +40,33 @@ Loop %TIMES_TO_LOOP% {
   Send {e up}
   
   ; Walk back
-  Send {w up}
-  Send {s down}
-  Sleep 3350
+  Send {d up}
+  Send {a down}
+  Sleep 2900
   
-  ; Stop at original position
-  Send {s up}
+  ; Stop to the right of the computer
+  Send {a up}
+  
+  ; Walk back to the computer
+  Send {w down}
+  Sleep 900
+  Send {w up}
+  
+  ; Enter the computer
+  Send {e down}
+  Sleep 50
+  Send {e up}
+  
+  ; Wait for the screen to zoom into the computer
+  Sleep 1500
+  
+  ; Click upload on the computer
+  MouseMove 950, 250
+  Sleep 50
+  MouseMove 975, 250
+  Sleep 50
+  Click
   
   ; Wait for buckets to refil
-  if (A_Index < TIMES_TO_LOOP) {
-    Sleep 20000
-  }
+  Sleep 18000
 }
-
-; Let the user knows the script is finished
-SoundBeep, 523, 1500
-MsgBox Go upload your memes
