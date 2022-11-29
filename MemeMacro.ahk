@@ -61,9 +61,9 @@ Loop {
   Sleep 1500
   
   ; Click upload on the computer
-  MouseMove 950, 250
+  MouseMove 950, 300
   Sleep 50
-  MouseMove 975, 250
+  MouseMove 975, 300
   Sleep 50
   Click
   
